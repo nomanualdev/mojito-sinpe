@@ -88,7 +88,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 
 		$number = $this->settings['number'];
-		$bank = $this->settings['number'];
+		$bank   = $this->settings['bank'];
 
 		$bank_number = '';
 		switch ( $bank ) {
