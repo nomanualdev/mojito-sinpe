@@ -66,6 +66,16 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'default'     => __( 'SINPE Móvil Payment', 'mojito-sinpe' ),
 				'desc_tip'    => true,
 			),
+			'bank'   => array(
+				'title'       => __('Bank', 'mojito-sinpe'),
+				'type'        => 'select',
+				'description' => __('Select your bank', 'woocommerce'),
+				'options' => array(
+					'bcr' => 'Banco de Costa Rica',
+					'bn'  => 'Banco Nacional de Costa Rica',
+					'bac'  => 'BAC Credomatic',
+				),
+			),
 			'number'  => array(
 				'title'   => __( 'Phone number', 'mojito-sinpe' ),
 				'type'    => 'text',
@@ -76,7 +86,25 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 	public function payment_fields() {
 
+
 		$number = $this->settings['number'];
+		$bank = $this->settings['number'];
+
+		$bank_number = '';
+		switch ( $bank ) {
+
+			case 'bn':
+				$bank_number = '2627';
+				break;
+
+			case 'bcr':
+				$bank_number = '2276';
+				break;
+
+			case 'bac':
+				$bank_number = '1222';
+				break;
+		}
 
 		if ( empty( $number ) ){
 			return;
@@ -89,7 +117,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			$amount = $woocommerce->cart->total;
 			$message = 'Pase ' . $amount . ' ' . $number;
 
-			echo '<a href="sms:+2657?body=' . $message . '">' . sprintf( __( 'Pay now: %s', 'mojito-sinpe' ), $amount ) . '</a>';
+			echo '<a href="sms:+' . $bank_number . '?body=' . $message . '">' . sprintf( __( 'Pay now: %s', 'mojito-sinpe' ), $amount ) . '</a>';
 		}
 	}
 
