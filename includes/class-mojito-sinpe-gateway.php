@@ -86,9 +86,12 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 	public function payment_fields() {
 
-
 		$number = $this->settings['number'];
 		$bank   = $this->settings['bank'];
+
+		if ( empty( $number ) || empty( $bank ) ){
+			return;
+		}
 
 		$bank_number = '';
 		switch ( $bank ) {
@@ -106,15 +109,11 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				break;
 		}
 
-		if ( empty( $number ) ){
-			return;
-		}
-
 		if ( is_checkout() ) {
 
 			global $woocommerce;
 
-			$amount = $woocommerce->cart->total;
+			$amount  = $woocommerce->cart->total;
 			$message = 'Pase ' . $amount . ' ' . $number;
 
 			echo '<a href="sms:+' . $bank_number . '?body=' . $message . '">' . sprintf( __( 'Pay now: %s', 'mojito-sinpe' ), $amount ) . '</a>';
