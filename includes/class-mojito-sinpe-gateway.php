@@ -39,6 +39,35 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		// Actions.
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
+		/**
+		 * Save client bank selection as meta to use it later in the order email
+		 */
+		add_action(
+			'woocommerce_checkout_update_order_meta',
+			function ( $order_id ) {
+				if ( ! empty( $_POST['mojito_sinpe_bank'] ) ) {
+					update_post_meta( $order_id, 'mojito_sinpe_bank', sanitize_text_field( $_POST['mojito_sinpe_bank'] ) );
+				}
+			}
+		);
+
+		/**
+		 * Add SINPE link to order email
+		 */
+		add_action(
+			'woocommerce_before_email_order',
+			function( $order, $sent_to_admin ){
+				
+				if ( ! $sent_to_admin ) {
+
+					if ( 'mojito-sinpe' == $order->payment_method ) {
+						echo "PAGAR AQUÍ SINPE MÓVIL con el link";
+						//echo '<p><strong>Instructions:</strong> Full payment is due immediately upon delivery: <em>cash only, no exceptions</em>.</p>';
+					}
+				}
+			},
+		10, 2 );
+
 	}
 
 	/**
@@ -171,6 +200,14 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 	}
 
 	public function process_payment( $order_id ) {
+
+		$bank = sanitize_text_field( $_POST['mojito_sinpe_bank'] );
+
+		if ( empty( $bank ) || 'none' === $bank ) {
+			wc_add_notice( __('Payment error: Please select your bank', 'mojito-sinpe'), 'error' );
+			return;
+		}
+		
 
 		global $woocommerce;
 		$order = new \WC_Order( $order_id );
