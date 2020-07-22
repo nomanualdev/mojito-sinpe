@@ -24,16 +24,12 @@ This section describes how to install the plugin and get it working.
 e.g.
 
 1. Upload the plugin files to the `/wp-content/plugins/mojito-sinpe` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the Settings->Mojito Sinpe screen to configure the plugin
-1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Use the Settings->Mojito Sinpe screen to configure the plugin
+4. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 
 == Screenshots ==
-1. General Settings
-2. Settings for Correos de Costa Rica 
-3. Information tab
-
 
 == Upgrade Notice ==
 
