@@ -30,22 +30,22 @@
 			bank_number = '9091';
 
 		} else if ( bank === 'davivienda' ) {
-			bank_number = '7070-7474';
+			bank_number = '70707474';
 
 		} else if ( bank === 'mutual-alajuela' ) {
-			bank_number = '7070-7079';
+			bank_number = '70707079';
 
 		} else if ( bank === 'promerica' ) {
-			bank_number = '6223-2450';
+			bank_number = '62232450';
 
 		} else if ( bank === 'coopealianza' ) {
-			bank_number = '6222-9523';
+			bank_number = '62229523';
 
 		} else if ( bank === 'caja-de-ande' ) {
-			bank_number = '6222-9524';
+			bank_number = '62229524';
 
 		} else if ( bank === 'mucap' ) {
-			bank_number = '8858-4646';
+			bank_number = '62229525';
 		}
 		
 		if ( type === 'mobile' ){
