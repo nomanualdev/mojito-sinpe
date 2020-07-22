@@ -1,0 +1,77 @@
+# Copyright (C) 2020 Manfred Rodríguez
+# This file is distributed under the same license as the Mojito Sinpe plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mojito Sinpe 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mojito-sinpe\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-07-21T19:13:29-05:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
+"X-Domain: mojito-sinpe\n"
+
+#. Plugin Name of the plugin
+msgid "Mojito Sinpe"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://mojitowp.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Sinpe Móvil as Woocommerce gateway"
+msgstr ""
+
+#. Author of the plugin
+msgid "Manfred Rodríguez"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://marodok.com"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:30
+msgid "SINPE Móvil"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:31
+msgid "Payment using SINPE Móvil"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:57
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:59
+msgid "Enable SINPE Payment"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:63
+msgid "Title"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:66
+msgid "SINPE Móvil Payment"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:70
+msgid "Phone number"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:90
+#: includes/class-mojito-sinpe-gateway.php:105
+msgid "Select your bank"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:120
+#: includes/class-mojito-sinpe-gateway.php:123
+msgid "Pay now: %s"
+msgstr ""
+
+#: includes/class-mojito-sinpe-gateway.php:161
+msgid "Awaiting SINPE payment"
+msgstr ""
