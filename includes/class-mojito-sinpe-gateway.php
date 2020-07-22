@@ -70,19 +70,30 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'title'   => __( 'Phone number', 'mojito-sinpe' ),
 				'type'    => 'text',
 				'default' => '',
+			), 
+			'show-in-checkout' => array(
+				'title'   => __('Show link in check-out page', 'mojito-sinpe'),
+				'type'    => 'checkbox',
+				'label'   => __('Show link in check-out page', 'mojito-sinpe'),
+				'default' => 'yes',
 			),
 		);
 	}
 
+	/**
+	 * Show options for SINPE in the checkout page
+	 *
+	 * @return void
+	 */
 	public function payment_fields() {
 
 		if ( ! is_checkout() ) {
 			return;
 		}
-	
-		$number = $this->settings['number'];		
 
-		if ( empty( $number ) ){
+		$number = $this->settings['number'];
+
+		if ( empty( $number ) ) {
 			return;
 		}
 
@@ -110,6 +121,13 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			</select>
 		</p>
 		<?php
+
+
+
+		if ( 'yes' !== $this->settings['show-in-checkout'] ) {
+			echo __( 'You will receive the SINPE Payment link in the order confirmation email. Open it on your mobile.', 'mojito-sinpe' );
+			return;
+		}
 
 		global $woocommerce;
 
