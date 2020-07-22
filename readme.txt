@@ -13,8 +13,12 @@ Sinpe Móvil as Woocommerce gateway
 
 == Description ==
 
+Enables SINPE Móvil as Payment gateway (Only works in Costa Rica)
 
 = Features =
+
+Add your phone number.
+The client select his bank.
 
 
 == Installation ==
