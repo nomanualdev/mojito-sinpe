@@ -115,136 +115,264 @@ class Mojito_Sinpe
 		/**
 		 * Save client bank selection as meta to use it later in the order email
 		 */
-		add_action(
-			'woocommerce_checkout_update_order_meta',
-			function ($order_id) {
-				if (!empty($_POST['mojito_sinpe_bank'])) {
-					update_post_meta($order_id, 'mojito_sinpe_bank', sanitize_text_field($_POST['mojito_sinpe_bank']));
-				}
-			}
-		);
+		add_action( 'woocommerce_checkout_update_order_meta', [ $this, 'save_client_bank_selection' ] );
 
 		/**
 		 * Add SINPE link to order email
 		 */
-		add_action(
-			'woocommerce_email_before_order_table',
-			function ( $order, $sent_to_admin, $plain_text, $email ) {
-				
-				/**
-				 * Check if is the correct email
-				 */
-				if ( 'customer_on_hold_order' !== $email->id ) {
-					return;
-				}
+		add_action( 'woocommerce_email_before_order_table', [ $this, 'add_sinpe_link_to_order_email' ], 10,	4 );
 
-				/**
-				 * Check if is sent to admin
-				 */
-				if ( $sent_to_admin ) {
-					return;
-				}
-
-				/**
-				 * Check if is the correct payment method
-				 */
-				if ( 'mojito-sinpe' !== $order->get_payment_method() ) {
-					return;
-				}
-
-				/**
-				 * Check if order is pais
-				 */
-				if ( $order->is_paid() ) {
-					return;
-				}
-
-				/**
-				 * Get Bank selected by client
-				 */
-				$bank = get_post_meta( $order->get_id(), 'mojito_sinpe_bank', true );
-
-				/**
-				 * Set the bank number
-				 */
-				$bank_number = '';
-
-				switch ( $bank ) {
-
-					case 'bn':
-						$bank_number = '2627';
-						break;
-
-					case 'bcr':
-						$bank_number = '2276';
-						break;
-
-					case 'bac':
-						$bank_number = '1222';
-						break;
-
-					case 'lafise':
-						$bank_number = '9091';
-						break;
-
-					case 'davivienda':
-						$bank_number = '70707474';
-						break;
-
-					case 'mutual-alajuela':
-						$bank_number = '70707079';
-						break;
-
-					case 'promerica':
-						$bank_number = '62232450';
-						break;
-
-					case 'coopealianza':
-						$bank_number = '62229523';
-						break;
-
-					case 'caja-de-ande':
-						$bank_number = '62229524';
-						break;
-
-					case 'mucap':
-						$bank_number = '62229525';
-						break;
-				}
-
-				/**
-				 * Check if there is bank number
-				 */
-				if ( empty( $bank_number ) ){
-					return;
-				}
-
-				/**
-				 * Build SMS link
-				 */				
-				$wc_gateways = new \WC_Payment_Gateways();
-				$payment_gateways = $wc_gateways->get_available_payment_gateways();
-				$mojito_sinpe_settings = $payment_gateways['mojito-sinpe'];
-				$number = $mojito_sinpe_settings->settings['number'];
-				
-
-				$message = 'Pase ' . $order->get_total() . ' ' . $number;
-
-				$link = '<a href="';
-				$link .= 'sms:+' . $bank_number . '?body=' . $message;
-				$link .= '">';
-				$link .= apply_filters( 'mojito_sinpe_email_label', __('Pague aquí SINPE Móvil', 'mojito-sinpe' ) );
-				$link .= '</a>';
-				$link .= '<br><br>';
-
-				echo $link;
-
-			},
-			10,
-			4
-		);
+		add_action( 'rest_api_init', function () {
+			register_rest_route(
+				'mojito-sinpe/v1',
+				'/open-payment-link/',
+				array(
+					'methods' => 'GET',
+					'callback' => [ $this, 'payment_link' ],
+				)
+			);
+		});
 	}
 
+	/**
+	 * Open Payment link from confirmation order
+	 */
+	public function payment_link(){
+
+		/**
+		 * Work only in mobile
+		 */
+		$sinpe_gateway = new Mojito_Sinpe_Gateway();
+		if ( ! $sinpe_gateway->is_mobile() ){
+			return __( 'Please open the link only in mobile', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Get order id
+		 */
+		$order_id = sanitize_text_field( $_GET['order'] );
+
+		/**
+		 * Check order id
+		 */
+		if ( ! is_numeric( $order_id ) ){
+			return __( 'Not a valid order', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Load Order data
+		 */
+		$order    = wc_get_order( $order_id );
+
+		/**
+		 * Is a valid order?
+		 */
+		if ( is_bool( $order ) ){
+			return __( 'Not a valid order', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Check if is the correct payment method
+		 */
+		if ( 'mojito-sinpe' !== $order->get_payment_method() ) {
+			return __( 'This order hasn\'t SINPE Móvil as payment method', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Check if order is paid
+		 */
+		if ( $order->is_paid() ) {
+			return __( 'Order is paid', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Get bank SINPE number
+		 */
+		$bank_number = $this->get_bank_number( $order->get_id() );
+
+		/**
+		 * Check if there is bank number
+		 */
+		if ( empty( $bank_number ) ) {
+			return __( 'Bank was not selected', 'mojito-sinpe' );
+		}
+
+		/**
+		 * Get Store Owner bank number
+		 */
+		$store_sinpe_number = $this->get_store_owner_bank_number();
+
+		/**
+		 * Build SMS message and link
+		 */
+		$message = sprintf(__('Pase %s %s', 'mojito-sinpe'), $order->get_total(), $store_sinpe_number);
+
+		echo '<p>' . sprintf(__('Send a SMS to %s with the content: "%s"', 'mojito-sinpe'), $bank_number, $message);
+		echo '<p>' . __('Are you on mobile? ', 'mojito-sinpe');
+
+		/**
+		 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
+		 */
+		wp_redirect( 'sms:+' . $bank_number . '?body=' . $message , 301);
+		exit;
+	}
+
+	/**
+	 * Save client bank selection as meta to use it later in the order email
+	 * @return void
+	 */
+	public function save_client_bank_selection( $order_id ){
+		if ( ! empty( $_POST['mojito_sinpe_bank'] ) ) {
+			update_post_meta( $order_id, 'mojito_sinpe_bank', sanitize_text_field( $_POST['mojito_sinpe_bank'] ) );
+		}
+	}
+
+	/**
+	 * Add SINPE link to order emai
+	 * @return void
+	 */
+	public function add_sinpe_link_to_order_email( $order, $sent_to_admin, $plain_text, $email ){
+
+		/**
+		 * Check if is the correct email
+		 */
+		if ( 'customer_on_hold_order' !== $email->id ) {
+			return;
+		}
+
+		/**
+		 * Check if is sent to admin
+		 */
+		if ($sent_to_admin) {
+			return;
+		}
+
+		/**
+		 * Check if is the correct payment method
+		 */
+		if ( 'mojito-sinpe' !== $order->get_payment_method() ) {
+			return;
+		}
+
+		/**
+		 * Check if order is pais
+		 */
+		if ( $order->is_paid() ) {
+			return;
+		}
+
+		$bank_number = $this->get_bank_number( $order->get_id() );
+
+		/**
+		 * Check if there is bank number
+		 */
+		if (empty($bank_number)) {
+			return;
+		}
+
+		/**
+		 * Get Store Owner bank number
+		 */
+		$store_sinpe_number = $this->get_store_owner_bank_number();
+
+		/**
+		 * Build SMS message and link
+		 */
+		$message = sprintf( __( 'Pase %s %s', 'mojito-sinpe' ), $order->get_total(), $store_sinpe_number );
+
+		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: "%s"', 'mojito-sinpe' ), $bank_number, $message );
+		echo '<p>' . __( 'Are you on mobile? ', 'mojito-sinpe' );
+
+		/**
+		 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
+		 */		
+		$link = '<a href="';
+		$link .= site_url() . '/wp-json/mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
+		//$link .= 'sms:+' . $bank_number . '?body=' . $message;
+		$link .= '">';
+		$link .= apply_filters( 'mojito_sinpe_email_label', __( 'Pay here SINPE Móvil', 'mojito-sinpe' ) );
+		$link .= '</a>';
+		$link .= '<br><br>';
+
+		echo $link;
+
+	}
+
+	/**
+	 * Get settings stores owner bank number
+	 * @return string
+	 */
+	private function get_store_owner_bank_number(){
+		$wc_gateways = new \WC_Payment_Gateways();
+		$payment_gateways = $wc_gateways->get_available_payment_gateways();
+		$mojito_sinpe_settings = $payment_gateways['mojito-sinpe'];
+		return $mojito_sinpe_settings->settings['number'];
+	}
+
+
+	/**
+	 * Get bank number
+	 *
+	 * @return string
+	 */
+	private function get_bank_number( $order_id ) {
+
+		/**
+		 * Get Bank selected by client
+		 */
+		$bank = get_post_meta( $order_id, 'mojito_sinpe_bank', true );
+
+		/**
+		 * Set the bank number
+		 */
+		$bank_number = '';
+
+		switch ($bank) {
+
+			case 'bn':
+				$bank_number = '2627';
+				break;
+
+			case 'bcr':
+				$bank_number = '2276';
+				break;
+
+			case 'bac':
+				$bank_number = '1222';
+				break;
+
+			case 'lafise':
+				$bank_number = '9091';
+				break;
+
+			case 'davivienda':
+				$bank_number = '70707474';
+				break;
+
+			case 'mutual-alajuela':
+				$bank_number = '70707079';
+				break;
+
+			case 'promerica':
+				$bank_number = '62232450';
+				break;
+
+			case 'coopealianza':
+				$bank_number = '62229523';
+				break;
+
+			case 'caja-de-ande':
+				$bank_number = '62229524';
+				break;
+
+			case 'mucap':
+				$bank_number = '62229525';
+				break;
+		}
+
+		return $bank_number;
+
+	}
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
