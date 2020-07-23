@@ -13,6 +13,11 @@ Sinpe Móvil as Woocommerce gateway
 
 == Description ==
 
+(Español)
+Plugin en desarrollo, por favor enviar cualquier retroalimentación a support@mojitowp.com
+
+
+(English)
 Enables SINPE Móvil as Payment gateway (Only works in Costa Rica)
 
 = Features =
@@ -43,5 +48,5 @@ e.g.
 
 == Upgrade Notice ==
 
-= 1.0.0 =
-* Initial Release
+= 0.0.1 =
+* Initial Release: Beta
