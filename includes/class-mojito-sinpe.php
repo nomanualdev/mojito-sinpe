@@ -122,6 +122,9 @@ class Mojito_Sinpe
 		 */
 		add_action( 'woocommerce_email_before_order_table', [ $this, 'add_sinpe_link_to_order_email' ], 10,	4 );
 
+		/**
+		 * Add enpoint to rest api
+		 */
 		add_action( 'rest_api_init', function () {
 			register_rest_route(
 				'mojito-sinpe/v1',
