@@ -282,7 +282,7 @@ class Mojito_Sinpe
 		$total = round( $order->get_total(), 0);
 		$message = sprintf( __( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number );
 
-		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: "%s"', 'mojito-sinpe' ), $bank_number, $message );
+		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: %s', 'mojito-sinpe' ), $bank_number, $message );
 		echo '<p>' . __( 'Are you on mobile? ', 'mojito-sinpe' );
 
 		/**

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-07-23T18:24:23-05:00\n"
-"PO-Revision-Date: 2020-07-23 23:47+0000\n"
+"PO-Revision-Date: 2020-07-24 00:21+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: mojito-sinpe\n"
 "Language: es-CR\n"
@@ -81,7 +81,7 @@ msgid ""
 "Open it on your mobile."
 msgstr ""
 "Recibirá el enlace de Pago SINPE en el correo electrónico de confirmación "
-"del pedido. Abralo en su teléfono."
+"del pedido. Ábralo en su teléfono."
 
 #: includes/class-mojito-sinpe-gateway.php:142 
 #: includes/class-mojito-sinpe-gateway.php:145
