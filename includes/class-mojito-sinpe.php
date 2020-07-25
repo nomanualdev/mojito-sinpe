@@ -123,6 +123,11 @@ class Mojito_Sinpe
 		add_action( 'woocommerce_email_before_order_table', [ $this, 'add_sinpe_link_to_order_email' ], 10,	4 );
 
 		/**
+		 * Add SINPE link to Thank you page
+		 */
+		add_action( 'woocommerce_thankyou', [ $this, 'add_sinpe_link_to_thankyou_page'], 10, 1 );
+
+		/**
 		 * Add enpoint to rest api
 		 */
 		add_action( 'rest_api_init', function () {
@@ -256,7 +261,7 @@ class Mojito_Sinpe
 		}
 
 		/**
-		 * Check if order is pais
+		 * Check if order is paid
 		 */
 		if ( $order->is_paid() ) {
 			return;
@@ -290,7 +295,6 @@ class Mojito_Sinpe
 		 */		
 		$link = '<a href="';
 		$link .= site_url() . '/wp-json/mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
-		//$link .= 'sms:+' . $bank_number . '?body=' . $message;
 		$link .= '">';
 		$link .= apply_filters( 'mojito_sinpe_email_label', __( 'Pay here SINPE Móvil', 'mojito-sinpe' ) );
 		$link .= '</a>';
@@ -299,6 +303,69 @@ class Mojito_Sinpe
 		echo $link;
 
 	}
+
+	/**
+	 * Add SINPE link to Thank you page
+	 */
+	public function add_sinpe_link_to_thankyou_page( $order_id ){
+		
+		/**
+		 * Load Order data
+		 */
+		$order    = wc_get_order( $order_id );
+
+		/**
+		 * Check if order is paid
+		 */
+		if ( $order->is_paid() ) {
+			return;
+		}
+		$bank_number = $this->get_bank_number( $order->get_id() );
+
+		/**
+		 * Check if there is bank number
+		 */
+		if (empty($bank_number)) {
+			return;
+		}
+
+		/**
+		 * Get Store Owner bank number
+		 */
+		$store_sinpe_number = $this->get_store_owner_bank_number();
+
+		/**
+		 * Build SMS message and link
+		 */
+		$total = round( $order->get_total(), 0);
+		$message = sprintf( __( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number );
+
+		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: %s', 'mojito-sinpe' ), $bank_number, $message );
+
+		/**
+		 * If mobile, show the link
+		 */
+		$sinpe_gateway = new Mojito_Sinpe_Gateway();
+		if ( $sinpe_gateway->is_mobile() ){
+
+			echo '<p>' . __( 'Are you on mobile?', 'mojito-sinpe' );
+
+			/**
+			 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
+			 */		
+			$link = '<a href="';
+			$link .= site_url() . '/wp-json/mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
+			$link .= '">';
+			$link .= ' '; // Yes, this space is Ok.
+			$link .= apply_filters( 'mojito_sinpe_email_label', __( 'Pay here SINPE Móvil', 'mojito-sinpe' ) );
+			$link .= '</a>';
+			$link .= '<br><br>';
+
+			echo $link;
+		}
+		
+	}
+	
 
 	/**
 	 * Get settings stores owner bank number

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
 Tested up to: 5.4.2
-Stable tag: 0.0.3
+Stable tag: 0.0.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,11 +14,20 @@ Sinpe Móvil as Woocommerce gateway
 == Description ==
 
 (Español)
-Plugin en desarrollo, por favor enviar cualquier retroalimentación a support@mojitowp.com
+Habilita SINPE Móvil como pasarela de pago (solo funciona en Costa Rica)
+
+Agrega enlace de pago en la página de pago (opcional), página de gracias y correo de confirmación de pedido.
+
+El dueño de la tienda sólo debe agregar su número de teléfono en "Woocommerce > Ajustes > Pagos > SINPE Móvil > Gestionar"
+
 
 
 (English)
 Enables SINPE Móvil as Payment gateway (Only works in Costa Rica)
+
+Add payment link on the checkout page (optional), thank you page and order confirmation email.
+
+The store owner should only add their phone number in "Woocommerce > Settings > Payments > SINPE Móvil > Manage"
 
 = Features =
 
@@ -48,5 +57,5 @@ e.g.
 
 == Upgrade Notice ==
 
-= 0.0.3 =
+= 0.0.4 =
 * Initial Release: Beta
