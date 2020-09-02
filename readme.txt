@@ -3,7 +3,7 @@ Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
-Tested up to: 5.4.2
+Tested up to: 5.5.1
 Stable tag: 0.0.4
 Requires PHP: 7.0
 License: GPLv2 or later

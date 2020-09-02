@@ -88,6 +88,7 @@ function mojito_sinpe_run() {
 /**
  * Is multisite?
  */
+$load = true;
 if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 
 	if ( function_exists( 'is_plugin_active' ) && ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {

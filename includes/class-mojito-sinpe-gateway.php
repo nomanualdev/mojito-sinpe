@@ -12,8 +12,12 @@
  */
 
 namespace Mojito_Sinpe;
+
 use WC_Payment_Gateway;
 
+/**
+ * Mojito Sinpe Gateway
+ */
 class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 	/**
@@ -34,12 +38,16 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		$this->title = $this->get_option('title');
+		$this->title        = $this->get_option( 'title' );
+		$this->description  = $this->get_option( 'description' );
+		$this->instructions = $this->get_option( 'instructions' );
 
 		// Actions.
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
+		add_action( 'woocommerce_thankyou_mojito-sinpe', array( $this, 'thankyou_page' ) );
 
-
+		// Customer Emails.
+		add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
 	}
 
 	/**
@@ -82,6 +90,20 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'type'    => 'checkbox',
 				'label'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
 				'default' => 'yes',
+			),
+			'description'     => array(
+				'title'       => __( 'Description', 'mojito-sinpe' ),
+				'type'        => 'textarea',
+				'description' => __( 'Payment method description that the customer will see on your checkout.', 'mojito-sinpe' ),
+				'default'     => __( 'Make your payment with your mobile. Your order will not be shipped until the funds have cleared in our account.', 'mojito-sinpe' ),
+				'desc_tip'    => true,
+			),
+			'instructions'    => array(
+				'title'       => __( 'Instructions', 'woocommerce' ),
+				'type'        => 'textarea',
+				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'woocommerce' ),
+				'default'     => 'Please send us the Sinpe Móvil voucher. Use your order ID as a payment reference.',
+				'desc_tip'    => true,
 			),
 		);
 	}
@@ -143,7 +165,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 		} else {
 			echo '<a data-type="desktop" data-msj="' . $message . '" data-amount="' . $amount . '" data-number="' . $number . '" class="mojito-sinpe-link">' . sprintf( __('Pay now: %s', 'mojito-sinpe'), $amount ) . '</a>';
-			echo '<p class="mojito-sinpe-payment-container"></p>';			
+			echo '<p class="mojito-sinpe-payment-container"></p>';
 		}
 
 	}
@@ -174,6 +196,44 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		return $is_mobile;
 	}
 
+
+	/**
+	 * Output for the order received page.
+	 *
+	 * @param int $order_id Order ID.
+	 */
+	public function thankyou_page( $order_id ) {
+		if ( $this->instructions ) {
+			echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
+		}
+
+	}
+
+
+	/**
+	 * Add content to the WC emails.
+	 *
+	 * @param WC_Order $order Order object.
+	 * @param bool     $sent_to_admin Sent to admin.
+	 * @param bool     $plain_text Email format: plain text or HTML.
+	 */
+	public function email_instructions( $order, $sent_to_admin, $plain_text = false ) {
+
+		if ( ! $sent_to_admin && 'mojito-sinpe' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
+			if ( $this->instructions ) {
+				echo wp_kses_post( wpautop( wptexturize( $this->instructions ) ) . PHP_EOL );
+			}
+		}
+
+	}
+
+
+	/**
+	 * Process the payment and return the result.
+	 *
+	 * @param int $order_id Order ID.
+	 * @return array
+	 */
 	public function process_payment( $order_id ) {
 
 		$bank = sanitize_text_field( $_POST['mojito_sinpe_bank'] );
