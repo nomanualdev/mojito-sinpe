@@ -84,5 +84,23 @@ function mojito_sinpe_run() {
 		$mojito_sinpe->run();
 	}
 }
-mojito_sinpe_run();
 
+/**
+ * Is multisite?
+ */
+if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+
+	if ( function_exists( 'is_plugin_active' ) && ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		$load = false;
+		require_once MOJITO_SINPE_DIR . 'admin/partials/mojito-sinpe-require-plugins-woocommerce.php';
+	}
+} else {
+	if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
+		$load = false;
+		require_once MOJITO_SINPE_DIR . 'admin/partials/mojito-sinpe-require-plugins-woocommerce.php';
+	}
+}
+
+if ( $load ) {
+	mojito_sinpe_run();
+}
