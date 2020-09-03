@@ -76,7 +76,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			'title'            => array(
 				'title'       => __( 'Title', 'mojito-sinpe' ),
 				'type'        => 'text',
-				'description' => __( 'Pay usin SINPE Móvil', 'woocommerce' ),
+				'description' => __( 'Pay using SINPE Móvil', 'mojito-sinpe' ),
 				'default'     => __( 'SINPE Móvil Payment', 'mojito-sinpe' ),
 				'desc_tip'    => true,
 			),
@@ -99,9 +99,9 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 			),
 			'instructions'    => array(
-				'title'       => __( 'Instructions', 'woocommerce' ),
+				'title'       => __( 'Instructions', 'mojito-sinpe' ),
 				'type'        => 'textarea',
-				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'woocommerce' ),
+				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'mojito-sinpe' ),
 				'default'     => 'Please send us the Sinpe Móvil voucher. Use your order ID as a payment reference.',
 				'desc_tip'    => true,
 			),
