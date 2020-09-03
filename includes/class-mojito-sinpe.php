@@ -457,8 +457,7 @@ class Mojito_Sinpe
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies()
-	{
+	private function load_dependencies() {
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -486,8 +485,19 @@ class Mojito_Sinpe
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
+		 */		
+		if ( !class_exists( 'Mojito_Sinpe_Public' ) ) {
+			require_once MOJITO_SINPE_DIR . 'public/class-mojito-sinpe-public.php';
+		}
+
+		/**
+		 * Load Product Vendors Support
 		 */
-		require_once MOJITO_SINPE_DIR . 'public/class-mojito-sinpe-public.php';
+		if ( !class_exists('Mojito_Sinpe_Compatibility_Product_Vendors_Support' ) ) {
+			require_once MOJITO_SINPE_DIR . 'includes/class-mojito-compatibility-product-vendors.php';
+			$Product_Vendors_support = new Mojito_Sinpe_Compatibility_Product_Vendors_Support();
+			$Product_Vendors_support->run();
+		}
 
 
 		$this->loader = new Mojito_Sinpe_Loader();
