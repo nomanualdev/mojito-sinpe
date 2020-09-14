@@ -13,6 +13,8 @@
  * @subpackage Mojito_Sinpe/includes
  */
 
+namespace Mojito_Sinpe;
+
 /**
  * The core plugin class.
  *
@@ -27,11 +29,7 @@
  * @subpackage Mojito_Sinpe/includes
  * @author     Manfred Rodriguez <marodok@gmail.com>
  */
-
-namespace Mojito_Sinpe;
-
-class Mojito_Sinpe
-{
+class Mojito_Sinpe {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -92,7 +90,7 @@ class Mojito_Sinpe
 
 		add_filter(
 			'woocommerce_payment_gateways',
-			function ($methods) {
+			function ( $methods ) {
 				$methods[] = 'Mojito_Sinpe\Mojito_Sinpe_Gateway';
 				return $methods;
 			}
@@ -115,43 +113,46 @@ class Mojito_Sinpe
 		/**
 		 * Save client bank selection as meta to use it later in the order email
 		 */
-		add_action( 'woocommerce_checkout_update_order_meta', [ $this, 'save_client_bank_selection' ] );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_client_bank_selection' ) );
 
 		/**
 		 * Add SINPE link to order email
 		 */
-		add_action( 'woocommerce_email_before_order_table', [ $this, 'add_sinpe_link_to_order_email' ], 10,	4 );
+		add_action( 'woocommerce_email_before_order_table', array( $this, 'add_sinpe_link_to_order_email' ), 10, 4 );
 
 		/**
 		 * Add SINPE link to Thank you page
 		 */
-		add_action( 'woocommerce_thankyou', [ $this, 'add_sinpe_link_to_thankyou_page'], 10, 1 );
+		add_action( 'woocommerce_thankyou', array( $this, 'add_sinpe_link_to_thankyou_page' ), 10, 1 );
 
 		/**
 		 * Add enpoint to rest api
 		 */
-		add_action( 'rest_api_init', function () {
-			register_rest_route(
-				'mojito-sinpe/v1',
-				'/open-payment-link/',
-				array(
-					'methods' => 'GET',
-					'callback' => [ $this, 'payment_link' ],
-				)
-			);
-		});
+		add_action(
+			'rest_api_init',
+			function () {
+				register_rest_route(
+					'mojito-sinpe/v1',
+					'/open-payment-link/',
+					array(
+						'methods'  => 'GET',
+						'callback' => array( $this, 'payment_link' ),
+					)
+				);
+			}
+		);
 	}
 
 	/**
 	 * Open Payment link from confirmation order
 	 */
-	public function payment_link(){
+	public function payment_link() {
 
 		/**
 		 * Work only in mobile
 		 */
 		$sinpe_gateway = new Mojito_Sinpe_Gateway();
-		if ( ! $sinpe_gateway->is_mobile() ){
+		if ( ! $sinpe_gateway->is_mobile() ) {
 			return __( 'Please open the link only in mobile', 'mojito-sinpe' );
 		}
 
@@ -163,7 +164,7 @@ class Mojito_Sinpe
 		/**
 		 * Check order id
 		 */
-		if ( ! is_numeric( $order_id ) ){
+		if ( ! is_numeric( $order_id ) ) {
 			return __( 'Not a valid order', 'mojito-sinpe' );
 		}
 
@@ -175,7 +176,7 @@ class Mojito_Sinpe
 		/**
 		 * Is a valid order?
 		 */
-		if ( is_bool( $order ) ){
+		if ( is_bool( $order ) ) {
 			return __( 'Not a valid order', 'mojito-sinpe' );
 		}
 
@@ -214,12 +215,12 @@ class Mojito_Sinpe
 		 * Build SMS message and link
 		 */
 		$total = round( $order->get_total(), 0);		
-		$message = sprintf(__('Pase %s %s', 'mojito-sinpe'), $total, $store_sinpe_number);
+		$message = sprintf(__( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number);
 
 		/**
 		 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
 		 */
-		wp_redirect( 'sms:+' . $bank_number . '?body=' . $message , 301);
+		wp_redirect( 'sms:+' . $bank_number . '?body=' . $message , 301 );
 		exit;
 	}
 
@@ -237,7 +238,7 @@ class Mojito_Sinpe
 	 * Add SINPE link to order emai
 	 * @return void
 	 */
-	public function add_sinpe_link_to_order_email( $order, $sent_to_admin, $plain_text, $email ){
+	public function add_sinpe_link_to_order_email( $order, $sent_to_admin, $plain_text, $email ) {
 
 		/**
 		 * Check if is the correct email
@@ -307,7 +308,7 @@ class Mojito_Sinpe
 	/**
 	 * Add SINPE link to Thank you page
 	 */
-	public function add_sinpe_link_to_thankyou_page( $order_id ){
+	public function add_sinpe_link_to_thankyou_page( $order_id ) {
 		
 		/**
 		 * Load Order data
@@ -365,19 +366,18 @@ class Mojito_Sinpe
 		}
 		
 	}
-	
 
 	/**
 	 * Get settings stores owner bank number
+	 *
 	 * @return string
 	 */
-	private function get_store_owner_bank_number(){
+	private function get_store_owner_bank_number() {
 		$wc_gateways = new \WC_Payment_Gateways();
 		$payment_gateways = $wc_gateways->get_available_payment_gateways();
 		$mojito_sinpe_settings = $payment_gateways['mojito-sinpe'];
 		return $mojito_sinpe_settings->settings['number'];
 	}
-
 
 	/**
 	 * Get bank number
@@ -457,8 +457,7 @@ class Mojito_Sinpe
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies()
-	{
+	private function load_dependencies() {
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -486,8 +485,19 @@ class Mojito_Sinpe
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
+		 */		
+		if ( !class_exists( 'Mojito_Sinpe_Public' ) ) {
+			require_once MOJITO_SINPE_DIR . 'public/class-mojito-sinpe-public.php';
+		}
+
+		/**
+		 * Load Product Vendors Support
 		 */
-		require_once MOJITO_SINPE_DIR . 'public/class-mojito-sinpe-public.php';
+		if ( !class_exists('Mojito_Sinpe_Compatibility_Product_Vendors_Support' ) ) {
+			require_once MOJITO_SINPE_DIR . 'includes/class-mojito-compatibility-product-vendors.php';
+			$Product_Vendors_support = new Mojito_Sinpe_Compatibility_Product_Vendors_Support();
+			$Product_Vendors_support->run();
+		}
 
 
 		$this->loader = new Mojito_Sinpe_Loader();

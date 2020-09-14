@@ -29,10 +29,49 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 
 		$this->id                 = 'mojito-sinpe';
-		$this->icon               = plugin_dir_url( __DIR__ ) . 'public/img/sinpe-movil.png';
 		$this->has_fields         = true;
 		$this->method_title       = __( 'SINPE Móvil', 'mojito-sinpe' );
 		$this->method_description = __( 'Payment using SINPE Móvil', 'mojito-sinpe' );
+
+		$icon = 'sinpe-movil';
+		switch ( $this->settings['sinpe-logo-size'] ) {
+
+			case 'no-logo':
+				$icon = false;
+				break;
+
+			case '500x275':
+				$icon = '500x275';
+				break;
+
+			case '400x220':
+				$icon = '400x220';
+				break;
+
+			case '300x165':
+				$icon = '300x165';
+				break;
+
+			case '200x110':
+				$icon = '200x110';
+				break;
+
+			case '100x55':
+				$icon = '100x55';
+				break;
+
+			case '50x28':
+				$icon = '50x28';
+				break;
+
+			default:
+				$icon = 'sinpe-movil';
+				break;
+		}
+
+		if ( false !== $icon ) {
+			$this->icon = plugin_dir_url( __DIR__ ) . 'public/img/' . $icon . '.png';
+		}
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -90,6 +129,21 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'type'    => 'checkbox',
 				'label'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
 				'default' => 'yes',
+			),
+			'sinpe-logo-size' => array(
+				'title'   => __('Sinpe logo size in check-out page', 'mojito-sinpe'),
+				'type'    => 'select',
+				'label'   => __('Sinpe logo size in check-out page', 'mojito-sinpe'),
+				'default' => 'no-logo',
+				'options' => array(
+					'no-logo' => __( 'No logo', 'mojito-sinpe' ),
+					'500x275' => '500x275',
+					'400x220' => '400x220',
+					'300x165' => '300x165',
+					'200x110' => '200x110',
+					'100x55'  => '100x55',
+					'50x28'   => '50x28',
+				),
 			),
 			'description'     => array(
 				'title'       => __( 'Description', 'mojito-sinpe' ),
@@ -149,6 +203,8 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			</select>
 		</p>
 		<?php
+
+		error_log( print_r( $this->settings, 1 ));
 
 		if ( 'yes' !== $this->settings['show-in-checkout'] ) {
 			echo __( 'You will receive the SINPE Payment link in the order confirmation email. Open it on your mobile.', 'mojito-sinpe' );
@@ -242,7 +298,6 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			wc_add_notice( __('Payment error: Please select your bank', 'mojito-sinpe'), 'error' );
 			return;
 		}
-		
 
 		global $woocommerce;
 		$order = new \WC_Order( $order_id );
