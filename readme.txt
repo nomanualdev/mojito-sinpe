@@ -57,5 +57,8 @@ e.g.
 
 == Upgrade Notice ==
 
+Opción para tamaño del logo en página de pago. Instrucciones para el cliente.
+
+== Changelog ==
 = 1.0.0 =
-* Initial Release: Beta
+* Initial Release
