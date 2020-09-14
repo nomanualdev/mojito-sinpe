@@ -33,49 +33,38 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		$this->method_title       = __( 'SINPE Móvil', 'mojito-sinpe' );
 		$this->method_description = __( 'Payment using SINPE Móvil', 'mojito-sinpe' );
 
+		// Load the settings.
+		$this->init_form_fields();
+		$this->init_settings();
+
 		$icon = 'sinpe-movil';
-		switch ( $this->settings['sinpe-logo-size'] ) {
+		if ( 'no-logo' === $this->settings['sinpe-logo-size'] ) {
+			$icon = false;
 
-			case 'no-logo':
-				$icon = false;
-				break;
+		} elseif ( '500x275' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-500x275';
 
-			case '500x275':
-				$icon = '500x275';
-				break;
+		} elseif ( '400x220' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-400x220';
 
-			case '400x220':
-				$icon = '400x220';
-				break;
+		} elseif ( '300x165' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-300x165';
 
-			case '300x165':
-				$icon = '300x165';
-				break;
+		} elseif ( '200x110' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-200x110';
 
-			case '200x110':
-				$icon = '200x110';
-				break;
+		} elseif ( '100x55' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-100x55';
 
-			case '100x55':
-				$icon = '100x55';
-				break;
-
-			case '50x28':
-				$icon = '50x28';
-				break;
-
-			default:
-				$icon = 'sinpe-movil';
-				break;
+		} elseif ( '50x28' === $this->settings['sinpe-logo-size'] ) {
+			$icon = 'sinpe-movil-50x28';
+		} else {
+			$icon = 'sinpe-movil';
 		}
 
 		if ( false !== $icon ) {
 			$this->icon = plugin_dir_url( __DIR__ ) . 'public/img/' . $icon . '.png';
 		}
-
-		// Load the settings.
-		$this->init_form_fields();
-		$this->init_settings();
 
 		$this->title        = $this->get_option( 'title' );
 		$this->description  = $this->get_option( 'description' );
@@ -203,8 +192,6 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			</select>
 		</p>
 		<?php
-
-		error_log( print_r( $this->settings, 1 ));
 
 		if ( 'yes' !== $this->settings['show-in-checkout'] ) {
 			echo __( 'You will receive the SINPE Payment link in the order confirmation email. Open it on your mobile.', 'mojito-sinpe' );

@@ -493,11 +493,13 @@ class Mojito_Sinpe {
 		/**
 		 * Load Product Vendors Support
 		 */
+		/*
 		if ( !class_exists('Mojito_Sinpe_Compatibility_Product_Vendors_Support' ) ) {
 			require_once MOJITO_SINPE_DIR . 'includes/class-mojito-compatibility-product-vendors.php';
 			$Product_Vendors_support = new Mojito_Sinpe_Compatibility_Product_Vendors_Support();
 			$Product_Vendors_support->run();
 		}
+		*/
 
 
 		$this->loader = new Mojito_Sinpe_Loader();
