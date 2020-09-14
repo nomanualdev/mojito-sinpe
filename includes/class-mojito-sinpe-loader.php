@@ -49,8 +49,7 @@ class Mojito_Sinpe_Loader
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
 		$this->actions = array();
 		$this->filters = array();

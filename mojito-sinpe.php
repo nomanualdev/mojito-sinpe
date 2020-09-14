@@ -4,7 +4,7 @@
  *
  * @package           Mojito_Sinpe
  * @author            Marodok
- * @link              https://marodok.com
+ * @link              https://mojitowp.com/
  *
  * @wordpress-plugin
  * Plugin Name: Mojito Sinpe
@@ -14,7 +14,7 @@
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * Author: Manfred Rodríguez
- * Author URI: https://marodok.com
+ * Author URI: https://mojitowp.com/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: mojito-sinpe
