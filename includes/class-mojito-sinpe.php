@@ -293,9 +293,9 @@ class Mojito_Sinpe {
 
 		/**
 		 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
-		 */		
-		$link = '<a href="';
-		$link .= site_url() . '/wp-json/mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
+		 */
+		$link  = '<a href="';
+		$link .= rest_url() . 'mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
 		$link .= '">';
 		$link .= apply_filters( 'mojito_sinpe_email_label', __( 'Pay here SINPE Móvil', 'mojito-sinpe' ) );
 		$link .= '</a>';
@@ -309,7 +309,7 @@ class Mojito_Sinpe {
 	 * Add SINPE link to Thank you page
 	 */
 	public function add_sinpe_link_to_thankyou_page( $order_id ) {
-		
+
 		/**
 		 * Load Order data
 		 */
@@ -338,7 +338,7 @@ class Mojito_Sinpe {
 		/**
 		 * Build SMS message and link
 		 */
-		$total = round( $order->get_total(), 0);
+		$total   = round( $order->get_total(), 0 );
 		$message = sprintf( __( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number );
 
 		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: %s', 'mojito-sinpe' ), $bank_number, $message );
@@ -347,15 +347,15 @@ class Mojito_Sinpe {
 		 * If mobile, show the link
 		 */
 		$sinpe_gateway = new Mojito_Sinpe_Gateway();
-		if ( $sinpe_gateway->is_mobile() ){
+		if ( $sinpe_gateway->is_mobile() ) {
 
 			echo '<p>' . __( 'Are you on mobile?', 'mojito-sinpe' );
 
 			/**
 			 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
-			 */		
+			 */
 			$link = '<a href="';
-			$link .= site_url() . '/wp-json/mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
+			$link .= rest_url() . 'mojito-sinpe/v1/open-payment-link?order=' . $order->get_id();
 			$link .= '">';
 			$link .= ' '; // Yes, this space is Ok.
 			$link .= apply_filters( 'mojito_sinpe_email_label', __( 'Pay here SINPE Móvil', 'mojito-sinpe' ) );
@@ -396,7 +396,7 @@ class Mojito_Sinpe {
 		 */
 		$bank_number = '';
 
-		switch ($bank) {
+		switch ( $bank ) {
 
 			case 'bn':
 				$bank_number = '2627';
@@ -463,7 +463,7 @@ class Mojito_Sinpe {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		if( !class_exists( 'Mojito_Sinpe_Loader' ) ){
+		if ( ! class_exists( 'Mojito_Sinpe_Loader' ) ) {
 			require_once MOJITO_SINPE_DIR . 'includes/class-mojito-sinpe-loader.php';
 		}		
 

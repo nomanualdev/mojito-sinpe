@@ -2,7 +2,7 @@
 
 namespace Mojito_Sinpe;
 
-if ( ! class_exists( 'WooCommerce' ) ) {
+if ( ! class_exists( 'WooCommerce' ) && is_admin() ) {
 	?>
 	<div id="message" class="error">
 		<p>
