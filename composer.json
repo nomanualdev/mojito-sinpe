@@ -1,0 +1,5 @@
+{
+    "require": {
+        "hisorange/browser-detect": "^4.2"
+    }
+}

@@ -69,6 +69,8 @@ register_deactivation_hook(
 /**
  * The core plugin class that is used to define internationalization and public-facing site hooks.
  */
+
+require_once MOJITO_SINPE_DIR . 'vendor/autoload.php';
 require MOJITO_SINPE_DIR . 'includes/class-mojito-sinpe.php';
 
 /**

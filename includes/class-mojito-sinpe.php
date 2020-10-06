@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -14,6 +13,8 @@
  */
 
 namespace Mojito_Sinpe;
+
+//use hisorange\BrowserDetect\Parser as Browser;
 
 /**
  * The core plugin class.
@@ -214,13 +215,21 @@ class Mojito_Sinpe {
 		/**
 		 * Build SMS message and link
 		 */
-		$total = round( $order->get_total(), 0);		
-		$message = sprintf(__( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number);
+		$total   = round( $order->get_total(), 0 );
+		$message = sprintf( __( 'Pase %s %s Order %s', 'mojito-sinpe' ), $total, $store_sinpe_number, $order_id );
 
 		/**
 		 * The link address to website to prevent double payments. Also gmail blocks "sms" in href attribute.
 		 */
-		wp_redirect( 'sms:+' . $bank_number . '?body=' . $message , 301 );
+		$concat = '?';
+		$detect = new \Mobile_Detect();
+
+		if ( true === $detect->isIphone() ) {
+			$concat = '&';
+		}
+
+		wp_redirect( 'sms:+' . $bank_number . $concat . 'body=' . $message , 301 );
+
 		exit;
 	}
 
