@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-14T17:59:16-05:00\n"
-"PO-Revision-Date: 2020-09-14 23:05+0000\n"
+"POT-Creation-Date: 2020-10-06T16:36:54-05:00\n"
+"PO-Revision-Date: 2020-10-06 21:39+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: mojito-sinpe\n"
 "Language: es-CR\n"
@@ -142,43 +142,46 @@ msgstr "Error de pago: Por favor seleccione su banco"
 msgid "Awaiting SINPE payment"
 msgstr "En espera de pago SINPE"
 
-#: includes/class-mojito-sinpe.php:156
+#: includes/class-mojito-sinpe.php:157
 msgid "Please open the link only in mobile"
 msgstr "Abra el enlace solo en el móvil"
 
-#: includes/class-mojito-sinpe.php:168 includes/class-mojito-sinpe.php:180
+#: includes/class-mojito-sinpe.php:169 includes/class-mojito-sinpe.php:181
 msgid "Not a valid order"
 msgstr "No es un pedido válido"
 
-#: includes/class-mojito-sinpe.php:187
+#: includes/class-mojito-sinpe.php:188
 msgid "This order hasn't SINPE Móvil as payment method"
 msgstr "Este pedido no tiene SINPE Móvil como método de pago"
 
-#: includes/class-mojito-sinpe.php:194
+#: includes/class-mojito-sinpe.php:195
 msgid "Order is paid"
 msgstr "Pedido pagado"
 
-#: includes/class-mojito-sinpe.php:206
+#: includes/class-mojito-sinpe.php:207
 msgid "Bank was not selected"
 msgstr "El banco no fue seleccionado"
 
-#: includes/class-mojito-sinpe.php:218 includes/class-mojito-sinpe.php:289 
-#: includes/class-mojito-sinpe.php:342
+#: includes/class-mojito-sinpe.php:219
+msgid "Pase %s %s Order %s"
+msgstr "Pase %s %s Pedido %s"
+
+#: includes/class-mojito-sinpe.php:298 includes/class-mojito-sinpe.php:351
 msgid "Pase %s %s"
 msgstr "Pase %s %s"
 
-#: includes/class-mojito-sinpe.php:291 includes/class-mojito-sinpe.php:344
+#: includes/class-mojito-sinpe.php:300 includes/class-mojito-sinpe.php:353
 msgid "Send a SMS to %s with the content: %s"
 msgstr "Envíe un SMS a %s con el texto: \"%s\""
 
-#: includes/class-mojito-sinpe.php:292
+#: includes/class-mojito-sinpe.php:301
 msgid "Are you on mobile? "
 msgstr "¿Está en su teléfono?"
 
-#: includes/class-mojito-sinpe.php:300 includes/class-mojito-sinpe.php:361
+#: includes/class-mojito-sinpe.php:309 includes/class-mojito-sinpe.php:370
 msgid "Pay here SINPE Móvil"
 msgstr "Pague aquí SINPE Móvil"
 
-#: includes/class-mojito-sinpe.php:352
+#: includes/class-mojito-sinpe.php:361
 msgid "Are you on mobile?"
 msgstr "¿Está en su teléfono?"
