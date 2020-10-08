@@ -57,11 +57,11 @@ e.g.
 
 == Upgrade Notice ==
 
-Opción para tamaño del logo en página de pago. Instrucciones para el cliente.
+Correción para teléfonos iPhone, ID de pedido en detalle del mensaje.
 
 == Changelog ==
 
-= 1.0.1 =
+= 1.0.2 =
 * Rest API URL Fix
 
 = 1.0.0 =
