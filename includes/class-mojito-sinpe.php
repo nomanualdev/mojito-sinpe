@@ -14,8 +14,6 @@
 
 namespace Mojito_Sinpe;
 
-//use hisorange\BrowserDetect\Parser as Browser;
-
 /**
  * The core plugin class.
  *
@@ -228,7 +226,7 @@ class Mojito_Sinpe {
 			$concat = '&';
 		}
 
-		wp_redirect( 'sms:+' . $bank_number . $concat . 'body=' . $message , 301 );
+		wp_redirect( 'sms:+' . $bank_number . $concat . 'body=' . $message, 301 );
 
 		exit;
 	}

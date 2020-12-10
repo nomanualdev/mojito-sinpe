@@ -24,7 +24,7 @@
 			bank_number = '2276';
 
 		} else if ( bank === 'bac' ) {
-			bank_number = '7070-1212';
+			bank_number = '70701212';
 
 		} else if ( bank === 'lafise' ) {
 			bank_number = '9091';
