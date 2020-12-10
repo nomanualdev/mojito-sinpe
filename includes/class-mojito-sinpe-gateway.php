@@ -40,22 +40,16 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		$icon = 'sinpe-movil';
 		if ( 'no-logo' === $this->settings['sinpe-logo-size'] ) {
 			$icon = false;
-
 		} elseif ( '500x275' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-500x275';
-
 		} elseif ( '400x220' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-400x220';
-
 		} elseif ( '300x165' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-300x165';
-
 		} elseif ( '200x110' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-200x110';
-
 		} elseif ( '100x55' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-100x55';
-
 		} elseif ( '50x28' === $this->settings['sinpe-logo-size'] ) {
 			$icon = 'sinpe-movil-50x28';
 		} else {
@@ -85,7 +79,6 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 	 * @return void
 	 */
 	public function init() {
-
 	}
 
 	/**
@@ -113,16 +106,22 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'type'    => 'text',
 				'default' => '',
 			),
+			'ask-voucher-id'   => array(
+				'title'   => __( 'Ask voucher id in check-out page', 'mojito-sinpe' ),
+				'type'    => 'checkbox',
+				'label'   => __( 'Ask voucher id in check-out page', 'mojito-sinpe' ),
+				'default' => 'no',
+			),
 			'show-in-checkout' => array(
 				'title'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
 				'default' => 'yes',
 			),
-			'sinpe-logo-size' => array(
-				'title'   => __('Sinpe logo size in check-out page', 'mojito-sinpe'),
+			'sinpe-logo-size'  => array(
+				'title'   => __( 'Sinpe logo size in check-out page', 'mojito-sinpe' ),
 				'type'    => 'select',
-				'label'   => __('Sinpe logo size in check-out page', 'mojito-sinpe'),
+				'label'   => __( 'Sinpe logo size in check-out page', 'mojito-sinpe' ),
 				'default' => 'no-logo',
 				'options' => array(
 					'no-logo' => __( 'No logo', 'mojito-sinpe' ),
@@ -134,14 +133,14 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 					'50x28'   => '50x28',
 				),
 			),
-			'description'     => array(
+			'description'      => array(
 				'title'       => __( 'Description', 'mojito-sinpe' ),
 				'type'        => 'textarea',
 				'description' => __( 'Payment method description that the customer will see on your checkout.', 'mojito-sinpe' ),
 				'default'     => __( 'Make your payment with your mobile. Your order will not be shipped until the funds have cleared in our account.', 'mojito-sinpe' ),
 				'desc_tip'    => true,
 			),
-			'instructions'    => array(
+			'instructions'     => array(
 				'title'       => __( 'Instructions', 'mojito-sinpe' ),
 				'type'        => 'textarea',
 				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'mojito-sinpe' ),
@@ -169,7 +168,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		}
 
 		/*
-		https://www.bccr.fi.cr/seccion-sistema-de-pagos/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%c3%b3vil
+		URL: https://www.bccr.fi.cr/seccion-sistema-de-pagos/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%c3%b3vil
 		*/
 		$sinpe_banks = array(
 			'none'            => __( 'Select your bank', 'mojito-sinpe' ),
@@ -209,12 +208,21 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 		if ( $this->is_mobile() ) {
 			echo '<a data-type="mobile" data-msj="' . $message . '" data-amount="' . $amount . '" data-number="' . $number . '" class="mojito-sinpe-link">' . sprintf( __( 'Pay now: %s', 'mojito-sinpe' ), $amount ) . '</a>';
-
 		} else {
-			echo '<a data-type="desktop" data-msj="' . $message . '" data-amount="' . $amount . '" data-number="' . $number . '" class="mojito-sinpe-link">' . sprintf( __('Pay now: %s', 'mojito-sinpe'), $amount ) . '</a>';
+			echo '<a data-type="desktop" data-msj="' . $message . '" data-amount="' . $amount . '" data-number="' . $number . '" class="mojito-sinpe-link">' . sprintf( __( 'Pay now: %s', 'mojito-sinpe' ), $amount ) . '</a>';
 			echo '<p class="mojito-sinpe-payment-container"></p>';
 		}
 
+		if ( 'yes' === $this->settings['ask-voucher-id'] ) {
+
+			$placeholder = apply_filters( 'mojito_sinpe_ask_voucher_placeholder', __( 'Enter your voucher ID here', 'mojito-sinpe' ) );
+		?>
+			<p>
+				<label for="mojito_sinpe_voucher_id"><?php echo __( 'Enter your voucher ID', 'mojito-sinpe' ); ?></label>
+				<input required class="mojito_sinpe_voucher_id" id="mojito_sinpe_voucher_id" name="mojito_sinpe_voucher_id" type="text" placeholder="<?php echo $placeholder; ?>">
+			</p>
+		<?php
+		}
 	}
 
 	/**
@@ -253,7 +261,6 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		if ( $this->instructions ) {
 			echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
 		}
-
 	}
 
 
@@ -271,7 +278,6 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				echo wp_kses_post( wpautop( wptexturize( $this->instructions ) ) . PHP_EOL );
 			}
 		}
-
 	}
 
 
@@ -286,14 +292,26 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		$bank = sanitize_text_field( $_POST['mojito_sinpe_bank'] );
 
 		if ( empty( $bank ) || 'none' === $bank ) {
-			wc_add_notice( __('Payment error: Please select your bank', 'mojito-sinpe'), 'error' );
+			wc_add_notice( __( 'Payment error: Please select your bank', 'mojito-sinpe' ), 'error' );
 			return;
 		}
 
 		global $woocommerce;
 		$order = new \WC_Order( $order_id );
 
-		// Mark as on-hold (we're awaiting the SINPE).
+		if ( 'yes' === $this->settings['ask-voucher-id'] ) {
+
+			$voucher = sanitize_text_field( $_POST['mojito_sinpe_voucher_id'] );
+
+			if ( empty( $voucher ) ) {
+				wc_add_notice( __( 'Payment error: Please enter your voucher id', 'mojito-sinpe' ), 'error' );
+				return;
+			}
+
+			$order->add_order_note( sprintf( __( 'SINPE Voucher id: %s' , 'mojito-sinpe' ), $voucher ) );
+		}
+
+		// Mark as on-hold ( we're awaiting the SINPE).
 		$order->update_status( 'on-hold', __( 'Awaiting SINPE payment', 'mojito-sinpe' ) );
 
 		// Remove cart.
@@ -302,8 +320,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		// Return thankyou redirect.
 		return array(
 			'result'   => 'success',
-			'redirect' => $this->get_return_url( $order )
+			'redirect' => $this->get_return_url( $order ),
 		);
 	}
-
 }

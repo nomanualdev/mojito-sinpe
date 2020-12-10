@@ -136,6 +136,7 @@ class Mojito_Sinpe {
 					array(
 						'methods'  => 'GET',
 						'callback' => array( $this, 'payment_link' ),
+						'permission_callback' => array(),
 					)
 				);
 			}
