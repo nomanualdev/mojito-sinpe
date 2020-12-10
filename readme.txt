@@ -1,10 +1,10 @@
 === Mojito Sinpe ===
-Contributors: marodok
+Contributors: quantumdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
-Tested up to: 5.5.1
-Stable tag: 1.0.2
+Tested up to: 5.6
+Stable tag: 1.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -49,17 +49,19 @@ e.g.
 
 == Screenshots ==
 
-== Upgrade Notice ==
-
 == Frequently Asked Questions ==
 
 == Features included ==
 
 == Upgrade Notice ==
 
-Correción para teléfonos iPhone, ID de pedido en detalle del mensaje.
+Actualización del número del BAC. Credecoop agregado.
 
 == Changelog ==
+
+= 1.0.3 = 
+* BAC Bank number updated
+* Added Credecoop
 
 = 1.0.2 =
 * Rest API URL Fix

@@ -4,7 +4,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://marodok.com
+ * @link       https://mojitowp.com/
  * @since      1.0.0
  *
  * @package    Mojito_Sinpe

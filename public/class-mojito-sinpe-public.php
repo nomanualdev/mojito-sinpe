@@ -2,7 +2,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://marodok.com
+ * @link       https://mojitowp.com/
  * @since      1.0.0
  *
  * @package    Mojito_Sinpe
@@ -17,7 +17,7 @@
  *
  * @package    Mojito_Sinpe
  * @subpackage Mojito_Sinpe/public
- * @author     Manfred Rodriguez <marodok@gmail.com>
+ * @author     Mojito Team <support@mojitowp.com>
  */
 
 namespace Mojito_Sinpe;

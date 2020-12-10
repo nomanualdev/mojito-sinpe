@@ -2,13 +2,13 @@
 /**
  * WooCommerce compatibility of the plugin.
  *
- * @link       https://marodok.com
+ * @link       https://mojitowp.com/
  * @since      1.0.0
  * WooCommerce compatibility of the plugin.
  *
  * @package    Mojito_Sinpe
  * @subpackage Mojito_Sinpe/public
- * @author     Manfred Rodriguez <marodok@gmail.com>
+ * @author     Mojito Team <support@mojitowp.com>
  */
 
 namespace Mojito_Sinpe;
@@ -168,18 +168,22 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			return;
 		}
 
+		/*
+		https://www.bccr.fi.cr/seccion-sistema-de-pagos/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%c3%b3vil
+		*/
 		$sinpe_banks = array(
 			'none'            => __( 'Select your bank', 'mojito-sinpe' ),
 			'bn'              => 'Banco Nacional de Costa Rica', // 2627
 			'bcr'             => 'Banco de Costa Rica', // 2276
-			'bac'             => 'Banco BAC San José', // 1222
+			'bac'             => 'Banco BAC San José', // 7070-1212
 			'lafise'          => 'Banco Lafise', // 9091
 			'davivienda'      => 'Banco Davivienda', // 7070-7474
 			'mutual-alajuela' => 'Grupo Mutual Alajuela - La Vivienda', // 7070-7079
 			'promerica'       => 'Banco Promerica', // 6223-2450
-			'coopealianza'    => 'Coopealianza', // 6222 9523
-			'caja-de-ande'    => 'Caja de Ande', // 6222 -9524
-			'mucap'           => 'MUCAP', // 8858-4646 ó 8861-5353
+			'coopealianza'    => 'Coopealianza', // 6222-9523
+			'caja-de-ande'    => 'Caja de Ande', // 6222-9524
+			'credecoop'       => 'Credecoop', // 7198-4256
+			'mucap'           => 'MUCAP', // 8858-4646 o 8861-5353
 		);
 
 		?>

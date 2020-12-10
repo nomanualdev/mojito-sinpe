@@ -8,7 +8,7 @@
  * @since      1.0.0
  * @package    Mojito_Sinpe
  * @subpackage Mojito_Sinpe/includes
- * @author     Manfred Rodriguez <marodok@gmail.com>
+ * @author     Mojito Team <support@mojitowp.com>
  */
 
 namespace Mojito_Sinpe;

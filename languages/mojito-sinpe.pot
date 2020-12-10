@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Manfred Rodríguez
+# Copyright (C) 2020 Mojito Team
 # This file is distributed under the same license as the Mojito Sinpe plugin.
 msgid ""
 msgstr ""
@@ -28,7 +28,7 @@ msgid "Sinpe Móvil as Woocommerce gateway"
 msgstr ""
 
 #. Author of the plugin
-msgid "Manfred Rodríguez"
+msgid "Mojito Team"
 msgstr ""
 
 #: admin/partials/mojito-sinpe-require-plugins-woocommerce.php:9

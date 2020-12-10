@@ -5,7 +5,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://marodok.com
+ * @link       https://mojitowp.com/
  * @since      1.0.0
  *
  * @package    Mojito_Sinpe
@@ -28,7 +28,7 @@ namespace Mojito_Sinpe;
  * @since      1.0.0
  * @package    Mojito_Sinpe
  * @subpackage Mojito_Sinpe/includes
- * @author     Manfred Rodriguez <marodok@gmail.com>
+ * @author     Mojito Team <support@mojitowp.com>
  */
 class Mojito_Sinpe {
 

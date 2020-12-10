@@ -24,7 +24,7 @@
 			bank_number = '2276';
 
 		} else if ( bank === 'bac' ) {
-			bank_number = '1222';
+			bank_number = '7070-1212';
 
 		} else if ( bank === 'lafise' ) {
 			bank_number = '9091';
@@ -43,6 +43,9 @@
 
 		} else if ( bank === 'caja-de-ande' ) {
 			bank_number = '62229524';
+		
+		} else if ( bank === 'credecoop' ) {
+			bank_number = '71984256';
 
 		} else if ( bank === 'mucap' ) {
 			bank_number = '62229525';

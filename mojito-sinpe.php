@@ -3,17 +3,17 @@
  * Mojito Sinpe
  *
  * @package           Mojito_Sinpe
- * @author            Marodok
+ * @author            Mojito Team
  * @link              https://mojitowp.com/
  *
  * @wordpress-plugin
  * Plugin Name: Mojito Sinpe
  * Plugin URI: https://mojitowp.com/
  * Description: Sinpe Móvil as Woocommerce gateway
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 5.2
  * Requires PHP: 7.0
- * Author: Manfred Rodríguez
+ * Author: Mojito Team
  * Author URI: https://mojitowp.com/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Version.
  */
-define( 'MOJITO_SINPE_VERSION', '1.0.2' );
+define( 'MOJITO_SINPE_VERSION', '1.0.3' );
 
 /**
  * Define plugin constants.
