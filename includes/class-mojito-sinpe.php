@@ -235,7 +235,7 @@ class Mojito_Sinpe {
 	 * Save client bank selection as meta to use it later in the order email
 	 * @return void
 	 */
-	public function save_client_bank_selection( $order_id ){
+	public function save_client_bank_selection( $order_id ) {
 		if ( ! empty( $_POST['mojito_sinpe_bank'] ) ) {
 			update_post_meta( $order_id, 'mojito_sinpe_bank', sanitize_text_field( $_POST['mojito_sinpe_bank'] ) );
 		}
