@@ -62,6 +62,7 @@ Actualización del número del BAC. Credecoop agregado.
 = 1.0.3 = 
 * BAC Bank number updated
 * Added Credecoop
+* Added voucher field
 
 = 1.0.2 =
 * Rest API URL Fix
