@@ -55,7 +55,7 @@ e.g.
 
 == Upgrade Notice ==
 
-Actualización del número del BAC. Credecoop agregado.
+Opción para solicitar número de comprobante. Actualización del número del BAC. Credecoop agregado.
 
 == Changelog ==
 

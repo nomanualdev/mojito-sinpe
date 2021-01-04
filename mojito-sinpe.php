@@ -20,7 +20,7 @@
  * Text Domain: mojito-sinpe
  * Domain Path: /languages
  * WC requires at least: 3.0.0
- * WC tested up to: 4.5.2
+ * WC tested up to: 4.8
  */
 
 namespace Mojito_Sinpe;
