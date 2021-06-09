@@ -168,7 +168,7 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		}
 
 		/*
-		URL: https://www.bccr.fi.cr/seccion-sistema-de-pagos/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%c3%b3vil
+		URL: https://www.bccr.fi.cr/sistema-de-pagos/informaci%C3%B3n-general/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%C3%B3vil
 		*/
 		$sinpe_banks = array(
 			'none'            => __( 'Select your bank', 'mojito-sinpe' ),
@@ -184,6 +184,8 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 			'credecoop'       => 'Credecoop', // 7198-4256
 			'mucap'           => 'MUCAP', // 8858-4646 o 8861-5353
 		);
+
+		$sinpe_banks = apply_filters( 'mojito_sinpe_banks_numbers', $sinpe_banks );
 
 		?>
 		<p>
