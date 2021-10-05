@@ -3,8 +3,8 @@ Contributors: quantumdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
-Tested up to: 5.6
-Stable tag: 1.0.3
+Tested up to: 58
+Stable tag: 1.0.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,7 @@ Agrega enlace de pago en la página de pago (opcional), página de gracias y cor
 
 El dueño de la tienda sólo debe agregar su número de teléfono en "Woocommerce > Ajustes > Pagos > SINPE Móvil > Gestionar"
 
+¿Desea colaborar? https://github.com/nomanualdev/mojito-sinpe
 
 
 (English)
@@ -58,6 +59,11 @@ e.g.
 Opción para solicitar número de comprobante. Actualización del número del BAC. Credecoop agregado.
 
 == Changelog ==
+
+= 1.0.4 =
+* Minor code fixes
+* Tested up to WP 5.8
+* Tested up to WC 5.7.1
 
 = 1.0.3 = 
 * BAC Bank number updated

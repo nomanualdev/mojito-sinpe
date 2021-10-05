@@ -70,6 +70,8 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 
 		// Customer Emails.
 		add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
+
+		unset( $_SESSION['mojito-sinpe-thank-you-page-already-showed'] );
 	}
 
 	/**
@@ -261,8 +263,11 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 	 * @param int $order_id Order ID.
 	 */
 	public function thankyou_page( $order_id ) {
-		if ( $this->instructions ) {
-			echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
+		if ( empty( $_SESSION['mojito-sinpe-thank-you-page-already-showed'] ) ) {
+			if ( ! empty( $this->instructions ) ) {
+				echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
+				$_SESSION['mojito-sinpe-thank-you-page-already-showed'] = 1;
+			}
 		}
 	}
 
