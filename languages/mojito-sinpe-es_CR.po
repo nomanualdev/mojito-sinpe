@@ -10,51 +10,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-10-06T16:36:54-05:00\n"
-"PO-Revision-Date: 2020-12-10 21:33+0000\n"
+"PO-Revision-Date: 2021-12-27 21:06+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: mojito-sinpe\n"
 "Language: es-CR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.4.3; wp-5.5.2-alpha-48959"
 
-#: includes/class-mojito-sinpe.php:360
+#: includes/class-mojito-sinpe.php:378
 msgid "Are you on mobile?"
 msgstr "¿Está en su teléfono?"
 
-#: includes/class-mojito-sinpe.php:300
+#: includes/class-mojito-sinpe.php:313
 msgid "Are you on mobile? "
 msgstr "¿Está en su teléfono?"
 
-#: includes/class-mojito-sinpe-gateway.php:110 
-#: includes/class-mojito-sinpe-gateway.php:112
+#: includes/class-mojito-sinpe-gateway.php:114 
+#: includes/class-mojito-sinpe-gateway.php:116
 msgid "Ask voucher id in check-out page"
 msgstr "Solicitar número de comprobante en página de pago"
 
-#: includes/class-mojito-sinpe-gateway.php:315
+#: includes/class-mojito-sinpe-gateway.php:344
 msgid "Awaiting SINPE payment"
 msgstr "En espera de pago SINPE"
 
-#: includes/class-mojito-sinpe.php:206
+#: includes/class-mojito-sinpe.php:215
 msgid "Bank was not selected"
 msgstr "El banco no fue seleccionado"
 
-#: includes/class-mojito-sinpe-gateway.php:137
+#: includes/class-mojito-sinpe-gateway.php:153
 msgid "Description"
 msgstr "Descripción"
 
-#: includes/class-mojito-sinpe-gateway.php:94
+#: includes/class-mojito-sinpe-gateway.php:98
 msgid "Enable SINPE Payment"
 msgstr "Habilitar pago SINPE"
 
-#: includes/class-mojito-sinpe-gateway.php:92
+#: includes/class-mojito-sinpe-gateway.php:96
 msgid "Enable/Disable"
 msgstr "Habilitar / Inhabilitar"
 
-#: includes/class-mojito-sinpe-gateway.php:221
+#: includes/class-mojito-sinpe-gateway.php:247
 msgid "Enter your voucher ID"
 msgstr "Digite su número de comprobante"
 
-#: includes/class-mojito-sinpe-gateway.php:218
+#: includes/class-mojito-sinpe-gateway.php:244
 msgid "Enter your voucher ID here"
 msgstr "Ingrese su número de comprobante aquí"
 
@@ -63,17 +63,17 @@ msgstr "Ingrese su número de comprobante aquí"
 msgid "https://mojitowp.com/"
 msgstr "https://mojitowp.com/"
 
-#: includes/class-mojito-sinpe-gateway.php:144
+#: includes/class-mojito-sinpe-gateway.php:160
 msgid "Instructions"
 msgstr "Instrucciones"
 
-#: includes/class-mojito-sinpe-gateway.php:146
+#: includes/class-mojito-sinpe-gateway.php:162
 msgid "Instructions that will be added to the thank you page and emails."
 msgstr ""
 "Instrucciones que se agregarán a la página de agradecimiento y a los correos "
 "electrónicos."
 
-#: includes/class-mojito-sinpe-gateway.php:140
+#: includes/class-mojito-sinpe-gateway.php:156
 msgid ""
 "Make your payment with your mobile. Your order will not be shipped until the "
 "funds have cleared in our account."
@@ -93,48 +93,48 @@ msgstr "El Mojito Sinpe requiere que WooCommerce esté activo."
 msgid "Mojito Team"
 msgstr "Mojito Team"
 
-#: includes/class-mojito-sinpe-gateway.php:127
+#: includes/class-mojito-sinpe-gateway.php:143
 msgid "No logo"
 msgstr "Sin logo"
 
-#: includes/class-mojito-sinpe.php:168 includes/class-mojito-sinpe.php:180
+#: includes/class-mojito-sinpe.php:177 includes/class-mojito-sinpe.php:189
 msgid "Not a valid order"
 msgstr "No es un pedido válido"
 
-#: includes/class-mojito-sinpe.php:194
+#: includes/class-mojito-sinpe.php:203
 msgid "Order is paid"
 msgstr "Pedido pagado"
 
-#: includes/class-mojito-sinpe.php:297 includes/class-mojito-sinpe.php:350
+#: includes/class-mojito-sinpe.php:310 includes/class-mojito-sinpe.php:368
 msgid "Pase %s %s"
 msgstr "Pase %s %s"
 
-#: includes/class-mojito-sinpe.php:218
+#: includes/class-mojito-sinpe.php:227
 msgid "Pase %s %s Order %s"
 msgstr "Pase %s %s Pedido %s"
 
-#: includes/class-mojito-sinpe.php:308 includes/class-mojito-sinpe.php:369
+#: includes/class-mojito-sinpe.php:321 includes/class-mojito-sinpe.php:387
 msgid "Pay here SINPE Móvil"
 msgstr "Pague aquí SINPE Móvil"
 
-#: includes/class-mojito-sinpe-gateway.php:210 
-#: includes/class-mojito-sinpe-gateway.php:212
+#: includes/class-mojito-sinpe-gateway.php:236 
+#: includes/class-mojito-sinpe-gateway.php:238
 msgid "Pay now: %s"
 msgstr "Pagar ya: %s"
 
-#: includes/class-mojito-sinpe-gateway.php:100
+#: includes/class-mojito-sinpe-gateway.php:104
 msgid "Pay using SINPE Móvil"
 msgstr "Pague usando SINPE Móvil"
 
-#: includes/class-mojito-sinpe-gateway.php:307
+#: includes/class-mojito-sinpe-gateway.php:336
 msgid "Payment error: Please enter your voucher id"
 msgstr "Error de pago: Por favor ingrese su número de comprobante"
 
-#: includes/class-mojito-sinpe-gateway.php:295
+#: includes/class-mojito-sinpe-gateway.php:324
 msgid "Payment error: Please select your bank"
 msgstr "Error de pago: Por favor seleccione su banco"
 
-#: includes/class-mojito-sinpe-gateway.php:139
+#: includes/class-mojito-sinpe-gateway.php:155
 msgid "Payment method description that the customer will see on your checkout."
 msgstr "Descripción del método de pago que el cliente verá en su pago."
 
@@ -142,30 +142,40 @@ msgstr "Descripción del método de pago que el cliente verá en su pago."
 msgid "Payment using SINPE Móvil"
 msgstr "Pagos usando SINPE Móvil"
 
-#: includes/class-mojito-sinpe-gateway.php:105
+#: includes/class-mojito-sinpe-gateway.php:109
 msgid "Phone number"
 msgstr "Número de teléfono"
 
-#: includes/class-mojito-sinpe.php:156
+#: includes/class-mojito-sinpe.php:165
 msgid "Please open the link only in mobile"
 msgstr "Abra el enlace solo en el móvil"
 
-#: includes/class-mojito-sinpe-gateway.php:174 
-#: includes/class-mojito-sinpe-gateway.php:190
+#: includes/class-mojito-sinpe-gateway.php:195 
+#: includes/class-mojito-sinpe-gateway.php:216
 msgid "Select your bank"
 msgstr "Seleccione su banco"
 
-#: includes/class-mojito-sinpe.php:299 includes/class-mojito-sinpe.php:352
+#: includes/class-mojito-sinpe.php:312 includes/class-mojito-sinpe.php:370
 msgid "Send a SMS to %s with the content: %s"
 msgstr "Envíe un SMS a %s con el texto: \"%s\""
 
-#: includes/class-mojito-sinpe-gateway.php:116 
-#: includes/class-mojito-sinpe-gateway.php:118
+#: includes/class-mojito-sinpe-gateway.php:120 
+#: includes/class-mojito-sinpe-gateway.php:122
 msgid "Show link in check-out page"
 msgstr "Mostrar link en página de pago"
 
-#: includes/class-mojito-sinpe-gateway.php:122 
-#: includes/class-mojito-sinpe-gateway.php:124
+#: includes/class-mojito-sinpe-gateway.php:132 
+#: includes/class-mojito-sinpe-gateway.php:134
+msgid "Show link in email"
+msgstr "Mostrar link en correo de confirmación"
+
+#: includes/class-mojito-sinpe-gateway.php:126 
+#: includes/class-mojito-sinpe-gateway.php:128
+msgid "Show link in thank you page"
+msgstr "Mostrar link en página de gracias"
+
+#: includes/class-mojito-sinpe-gateway.php:138 
+#: includes/class-mojito-sinpe-gateway.php:140
 msgid "Sinpe logo size in check-out page"
 msgstr "Tamaño del logo SINPE en la página de pago"
 
@@ -177,7 +187,7 @@ msgstr "SINPE Móvil"
 msgid "Sinpe Móvil as Woocommerce gateway"
 msgstr "SINPE Móvil como pasarela de pago de Woocommerce"
 
-#: includes/class-mojito-sinpe-gateway.php:101
+#: includes/class-mojito-sinpe-gateway.php:105
 msgid "SINPE Móvil Payment"
 msgstr "Pago SINPE Móvil"
 
@@ -187,19 +197,19 @@ msgstr "Pago SINPE Móvil"
 msgid "Sinpe Number"
 msgstr "Número Sinpe"
 
-#: includes/class-mojito-sinpe-gateway.php:311
+#: includes/class-mojito-sinpe-gateway.php:340
 msgid "SINPE Voucher id: %s"
 msgstr "Comprobante SINPE: %s"
 
-#: includes/class-mojito-sinpe.php:187
+#: includes/class-mojito-sinpe.php:196
 msgid "This order hasn't SINPE Móvil as payment method"
 msgstr "Este pedido no tiene SINPE Móvil como método de pago"
 
-#: includes/class-mojito-sinpe-gateway.php:98
+#: includes/class-mojito-sinpe-gateway.php:102
 msgid "Title"
 msgstr "Título"
 
-#: includes/class-mojito-sinpe-gateway.php:200
+#: includes/class-mojito-sinpe-gateway.php:226
 msgid ""
 "You will receive the SINPE Payment link in the order confirmation email. "
 "Open it on your mobile."
