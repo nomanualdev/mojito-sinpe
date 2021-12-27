@@ -141,6 +141,15 @@ class Mojito_Sinpe {
 				);
 			}
 		);
+
+		add_action(
+			'woocommerce_init',
+			function(){
+				$wc_gateways = new \WC_Payment_Gateways();
+				$payment_gateways = $wc_gateways->get_available_payment_gateways();
+				$this->mojito_sinpe_settings = $payment_gateways['mojito-sinpe']->settings;
+			}
+		);
 	}
 
 	/**
@@ -248,6 +257,10 @@ class Mojito_Sinpe {
 	 */
 	public function add_sinpe_link_to_order_email( $order, $sent_to_admin, $plain_text, $email ) {
 
+		if ( 'yes' !== $this->mojito_sinpe_settings['show-in-email'] ) {
+			return;
+		}
+
 		/**
 		 * Check if is the correct email
 		 */
@@ -318,6 +331,11 @@ class Mojito_Sinpe {
 	 */
 	public function add_sinpe_link_to_thankyou_page( $order_id ) {
 
+
+		if ( 'yes' !== $this->mojito_sinpe_settings['show-in-thankyou-page'] ) {
+			return;
+		}
+
 		/**
 		 * Load Order data
 		 */
@@ -381,10 +399,7 @@ class Mojito_Sinpe {
 	 * @return string
 	 */
 	private function get_store_owner_bank_number() {
-		$wc_gateways = new \WC_Payment_Gateways();
-		$payment_gateways = $wc_gateways->get_available_payment_gateways();
-		$mojito_sinpe_settings = $payment_gateways['mojito-sinpe'];
-		return $mojito_sinpe_settings->settings['number'];
+		return $this->mojito_sinpe_settings['number'];
 	}
 
 	/**

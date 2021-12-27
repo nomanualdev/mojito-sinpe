@@ -56,9 +56,15 @@ e.g.
 
 == Upgrade Notice ==
 
-Opción para solicitar número de comprobante. Actualización del número del BAC. Credecoop agregado.
+Opciones para mostrar o ocultar enlace de pago en página de gracias y correo de confirmación. Actualización del número del BCR. BCT, Coopecaja y Coopelecheros agregados.
 
 == Changelog ==
+
+= 1.0.5 = 
+* Banks numbers updated.
+* Minor code fixes
+* Tested up to WP 5.8.2
+* Tested up to WC 6.0.0
 
 = 1.0.4 =
 * Minor code fixes

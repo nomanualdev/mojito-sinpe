@@ -71,7 +71,9 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		// Customer Emails.
 		add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
 
-		unset( $_SESSION['mojito-sinpe-thank-you-page-already-showed'] );
+		if ( isset( $_SESSION['mojito-sinpe-thank-you-page-already-showed'] ) ) {
+			unset( $_SESSION['mojito-sinpe-thank-you-page-already-showed'] );
+		}
 	}
 
 	/**
@@ -118,6 +120,18 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 				'title'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Show link in check-out page', 'mojito-sinpe' ),
+				'default' => 'yes',
+			),
+			'show-in-thankyou-page' => array(
+				'title'   => __( 'Show link in thank you page', 'mojito-sinpe' ),
+				'type'    => 'checkbox',
+				'label'   => __( 'Show link in thank you page', 'mojito-sinpe' ),
+				'default' => 'yes',
+			),
+			'show-in-email' => array(
+				'title'   => __( 'Show link in email', 'mojito-sinpe' ),
+				'type'    => 'checkbox',
+				'label'   => __( 'Show link in email', 'mojito-sinpe' ),
 				'default' => 'yes',
 			),
 			'sinpe-logo-size'  => array(
