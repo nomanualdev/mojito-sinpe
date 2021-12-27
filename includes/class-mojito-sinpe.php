@@ -258,7 +258,7 @@ class Mojito_Sinpe {
 		/**
 		 * Check if is sent to admin
 		 */
-		if ($sent_to_admin) {
+		if ( $sent_to_admin ) {
 			return;
 		}
 
@@ -281,7 +281,7 @@ class Mojito_Sinpe {
 		/**
 		 * Check if there is bank number
 		 */
-		if (empty($bank_number)) {
+		if ( empty( $bank_number ) ) {
 			return;
 		}
 
@@ -293,7 +293,7 @@ class Mojito_Sinpe {
 		/**
 		 * Build SMS message and link
 		 */
-		$total = round( $order->get_total(), 0);
+		$total   = round( $order->get_total(), 0);
 		$message = sprintf( __( 'Pase %s %s', 'mojito-sinpe' ), $total, $store_sinpe_number );
 
 		echo '<p>' . sprintf( __( 'Send a SMS to %s with the content: %s', 'mojito-sinpe' ), $bank_number, $message );
@@ -411,19 +411,47 @@ class Mojito_Sinpe {
 				break;
 
 			case 'bcr':
-				$bank_number = '2276';
+				$bank_number = '4066';
 				break;
 
 			case 'bac':
-				$bank_number = '1222';
+				$bank_number = '70701222';
+				break;
+
+			case 'bct':
+				$bank_number = '60400300';
+				break;
+
+			case 'caja-de-ande':
+				$bank_number = '62229532';
+				break;
+
+			case 'coopealianza':
+				$bank_number = '62229523';
+				break;
+
+			case 'coopecaja':
+				$bank_number = '62229526';
+				break;
+
+			case 'coopelecheros':
+				$bank_number = '60405957';
+				break;
+
+			case 'credecoop':
+				$bank_number = '71984256';
+				break;
+
+			case 'davivienda':
+				$bank_number = '70707474';
 				break;
 
 			case 'lafise':
 				$bank_number = '9091';
 				break;
 
-			case 'davivienda':
-				$bank_number = '70707474';
+			case 'mucap':
+				$bank_number = '62229525';
 				break;
 
 			case 'mutual-alajuela':
@@ -432,18 +460,6 @@ class Mojito_Sinpe {
 
 			case 'promerica':
 				$bank_number = '62232450';
-				break;
-
-			case 'coopealianza':
-				$bank_number = '62229523';
-				break;
-
-			case 'caja-de-ande':
-				$bank_number = '62229524';
-				break;
-
-			case 'mucap':
-				$bank_number = '62229525';
 				break;
 		}
 

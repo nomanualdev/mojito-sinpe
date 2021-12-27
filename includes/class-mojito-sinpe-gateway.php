@@ -172,20 +172,27 @@ class Mojito_Sinpe_Gateway extends WC_Payment_Gateway {
 		/*
 		Note: Web Archive URL. The real url was removed from Central Bank's SINPE official documentation.
 		URL: https://web.archive.org/web/20210824000600/https://www.bccr.fi.cr/sistema-de-pagos/informaci%C3%B3n-general/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%C3%B3vil
+
+		2021-12-27
+		https://www.bccr.fi.cr/sistema-de-pagos/tarifas-y-comisiones-del-sinpe/comisiones-cobradas-por-las-entidades-financieras/sinpe-m%c3%b3vil
+
 		*/
 		$sinpe_banks = array(
 			'none'            => __( 'Select your bank', 'mojito-sinpe' ),
 			'bn'              => 'Banco Nacional de Costa Rica', // 2627
-			'bcr'             => 'Banco de Costa Rica', // 2276
-			'bac'             => 'Banco BAC San José', // 7070-1212
-			'lafise'          => 'Banco Lafise', // 9091
+			'bcr'             => 'Banco de Costa Rica', // 4066
+			'bac'             => 'Banco BAC San José', // 7070-1222
+			'bct'             => 'Banco BCT', // 6040-0300
+			'caja-de-ande'    => 'Caja de Ande', // 6222-9532
+			'coopealianza'    => 'Coopealianza', // 6222-9523
+			'coopecaja'       => 'Coopecaja', // 6222-9526
+			'coopelecheros'   => 'Coopelecheros', // 6040-5957
+			'credecoop'       => 'Credecoop', // 7198-4256
 			'davivienda'      => 'Banco Davivienda', // 7070-7474
+			'lafise'          => 'Banco Lafise', // 9091
+			'mucap'           => 'MUCAP', // 8858-4646 o 8861-5353
 			'mutual-alajuela' => 'Grupo Mutual Alajuela - La Vivienda', // 7070-7079
 			'promerica'       => 'Banco Promerica', // 6223-2450
-			'coopealianza'    => 'Coopealianza', // 6222-9523
-			'caja-de-ande'    => 'Caja de Ande', // 6222-9524
-			'credecoop'       => 'Credecoop', // 7198-4256
-			'mucap'           => 'MUCAP', // 8858-4646 o 8861-5353
 		);
 
 		$sinpe_banks = apply_filters( 'mojito_sinpe_banks_numbers', $sinpe_banks );
