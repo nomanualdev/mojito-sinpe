@@ -147,7 +147,9 @@ class Mojito_Sinpe {
 			function(){
 				$wc_gateways = new \WC_Payment_Gateways();
 				$payment_gateways = $wc_gateways->get_available_payment_gateways();
-				$this->mojito_sinpe_settings = $payment_gateways['mojito-sinpe']->settings;
+				if ( ! empty( $payment_gateways['mojito-sinpe'] ) ) {
+					$this->mojito_sinpe_settings = $payment_gateways['mojito-sinpe']->settings;
+				}
 			}
 		);
 	}
