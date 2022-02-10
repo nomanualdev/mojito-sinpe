@@ -333,6 +333,9 @@ class Mojito_Sinpe {
 	 */
 	public function add_sinpe_link_to_thankyou_page( $order_id ) {
 
+		if ( is_ajax() ) {
+			return;
+		}
 
 		if ( 'yes' !== $this->mojito_sinpe_settings['show-in-thankyou-page'] ) {
 			return;
