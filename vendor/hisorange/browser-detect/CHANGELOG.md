@@ -1,3 +1,28 @@
+### Change in 4.5.0
+
+---
+
+- New shortcut call for deviceType (by @mylesduncanking)
+- Testing on PHP 8.1
+- Testing with Laravel 9.x
+
+### Changes in 4.4.0
+
+---
+
+- Support for Laravel 8.x
+- Support for PHP 8.x
+- New github actions tests to cover an even bigger test matrix
+- Fixes some PHPStan testing issue
+
+### Changes in 4.3.0
+
+---
+
+- Replaced the archived piwik/device-detector with the matomo/device-detector (by @matthewnessworthy)
+- Merged some readme changes
+- New micro feature **isInApp** check on the browser #156
+
 ### Changes in 4.2.2
 
 ---

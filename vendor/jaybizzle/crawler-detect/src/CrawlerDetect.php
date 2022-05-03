@@ -11,9 +11,9 @@
 
 namespace Jaybizzle\CrawlerDetect;
 
-use Jaybizzle\CrawlerDetect\Fixtures\Headers;
 use Jaybizzle\CrawlerDetect\Fixtures\Crawlers;
 use Jaybizzle\CrawlerDetect\Fixtures\Exclusions;
+use Jaybizzle\CrawlerDetect\Fixtures\Headers;
 
 class CrawlerDetect
 {
@@ -165,7 +165,7 @@ class CrawlerDetect
         $agent = trim(preg_replace(
             "/{$this->compiledExclusions}/i",
             '',
-            $userAgent ?: $this->userAgent
+            $userAgent ?: $this->userAgent ?: ''
         ));
 
         if ($agent === '') {

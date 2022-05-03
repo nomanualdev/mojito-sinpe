@@ -73,7 +73,7 @@ class Mojito_Sinpe {
 		if ( defined( 'MOJITO_SINPE_VERSION' ) ) {
 			$this->version = MOJITO_SINPE_VERSION;
 		} else {
-			$this->version = '1.0.5';
+			$this->version = '1.0.6';
 		}
 		$this->plugin_name = 'mojito-sinpe';
 

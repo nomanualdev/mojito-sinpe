@@ -3,8 +3,8 @@ Contributors: quantumdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
-Tested up to: 5.8.2
-Stable tag: 1.0.5
+Tested up to: 5.9.3
+Stable tag: 1.0.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,10 @@ e.g.
 Opciones para mostrar o ocultar enlace de pago en página de gracias y correo de confirmación. Actualización del número del BCR. BCT, Coopecaja y Coopelecheros agregados.
 
 == Changelog ==
+
+= 1.0.6 =
+* Tested up to WP 5.9.3
+* Tested up to WC 6.4.1
 
 = 1.0.5 = 
 * Banks numbers updated.

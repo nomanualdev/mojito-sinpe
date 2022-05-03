@@ -10,6 +10,6 @@ return array(
     'UAParser\\' => array($vendorDir . '/ua-parser/uap-php/src'),
     'League\\Pipeline\\' => array($vendorDir . '/league/pipeline/src'),
     'Jaybizzle\\CrawlerDetect\\' => array($vendorDir . '/jaybizzle/crawler-detect/src'),
-    'DeviceDetector\\' => array($vendorDir . '/piwik/device-detector'),
+    'DeviceDetector\\' => array($vendorDir . '/matomo/device-detector'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
 );

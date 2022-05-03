@@ -56,7 +56,7 @@ class ComposerStaticInitd1d6564a8efa80ad9206e62689a7a86a
         ),
         'DeviceDetector\\' => 
         array (
-            0 => __DIR__ . '/..' . '/piwik/device-detector',
+            0 => __DIR__ . '/..' . '/matomo/device-detector',
         ),
         'Composer\\CaBundle\\' => 
         array (
@@ -75,6 +75,7 @@ class ComposerStaticInitd1d6564a8efa80ad9206e62689a7a86a
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
     );
 

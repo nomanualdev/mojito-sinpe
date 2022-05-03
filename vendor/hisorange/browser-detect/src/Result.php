@@ -65,6 +65,11 @@ class Result implements ResultInterface
     protected $isEdge = false;
 
     /**
+     * @var boolean
+     */
+    protected $isInApp = false;
+
+    /**
      * @var bool
      */
     protected $isIE = false;
@@ -222,6 +227,19 @@ class Result implements ResultInterface
     /**
      * @inheritdoc
      */
+    public function deviceType(): string
+    {
+        foreach (['Mobile', 'Tablet', 'Desktop', 'Bot'] as $deviceType) {
+            if ($this->{'is' . $deviceType}()) {
+                return $deviceType;
+            }
+        }
+        return 'Unknown';
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function isChrome(): bool
     {
         return $this->isChrome;
@@ -257,6 +275,14 @@ class Result implements ResultInterface
     public function isEdge(): bool
     {
         return $this->isEdge;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isInApp(): bool
+    {
+        return $this->isInApp;
     }
 
     /**
