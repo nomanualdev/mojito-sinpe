@@ -145,11 +145,12 @@ class Mojito_Sinpe {
 		add_action(
 			'woocommerce_init',
 			function(){
-				$wc_gateways = new \WC_Payment_Gateways();
-				$payment_gateways = $wc_gateways->get_available_payment_gateways();
-				if ( ! empty( $payment_gateways['mojito-sinpe'] ) ) {
-					$this->mojito_sinpe_settings = $payment_gateways['mojito-sinpe']->settings;
-				}
+				add_filter( 'woocommerce_available_payment_gateways', function( $available_gateways ) {
+					if ( ! empty( $available_gateways['mojito-sinpe'] ) ) {
+						$this->mojito_sinpe_settings = $available_gateways['mojito-sinpe']->settings;
+					}
+					return $available_gateways;
+				});
 			}
 		);
 	}

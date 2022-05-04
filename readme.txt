@@ -61,6 +61,7 @@ Opciones para mostrar o ocultar enlace de pago en página de gracias y correo de
 == Changelog ==
 
 = 1.0.6 =
+* Compatibility fix for WooWallet
 * Tested up to WP 5.9.3
 * Tested up to WC 6.4.1
 
