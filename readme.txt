@@ -56,7 +56,7 @@ e.g.
 
 == Upgrade Notice ==
 
-Opciones para mostrar o ocultar enlace de pago en página de gracias y correo de confirmación. Actualización del número del BCR. BCT, Coopecaja y Coopelecheros agregados.
+Nueva opción para ocultar lista de bancos en página de pago. Correcciones varias.
 
 == Changelog ==
 
