@@ -61,9 +61,10 @@ Opciones para mostrar o ocultar enlace de pago en página de gracias y correo de
 == Changelog ==
 
 = 1.0.6 =
+* New option to hide banks list 
 * Compatibility fix for WooWallet
 * Tested up to WP 5.9.3
-* Tested up to WC 6.4.1
+* Tested up to WC 6.5.1
 
 = 1.0.5 = 
 * Banks numbers updated.
