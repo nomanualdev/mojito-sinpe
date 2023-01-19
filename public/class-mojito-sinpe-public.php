@@ -97,5 +97,11 @@ class Mojito_Sinpe_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mojito-sinpe-public.js', array( 'jquery' ), $this->version, false );
+
+		wp_localize_script(
+			$this->plugin_name,
+			'mojito_sinpe_show_text_after_banks_list',
+			apply_filters( 'mojito_sinpe_show_text_after_banks_list', 'yes' )
+		);
 	}
 }
