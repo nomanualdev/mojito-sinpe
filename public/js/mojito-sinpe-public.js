@@ -65,7 +65,7 @@
 		}
 		
 		if ( type === 'mobile' ){
-			var href = 'sms:+' + bank_number + '?body=' + link.data('msj');
+			var href = 'sms:' + bank_number + '?&body=' + link.data('msj');
 			link.attr('href', href);
 			link.show();
 		}else{			
