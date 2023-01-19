@@ -3,8 +3,8 @@ Contributors: quantumdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: ecommerce, woocommerce, payment, woocommerce payment, sinpe, costa rica, multisite
 Requires at least: 4.6
-Tested up to: 5.9.3
-Stable tag: 1.0.6
+Tested up to: 6.1.1
+Stable tag: 1.0.7
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,11 @@ e.g.
 Nueva opción para ocultar lista de bancos en página de pago. Correcciones varias.
 
 == Changelog ==
+
+= 1.0.7 =
+* New filter mojito_sinpe_show_text_after_banks_list
+* Tested up to WP 7.3.0
+* Tested up to WC 6.6.1
 
 = 1.0.6 =
 * New option to hide banks list 
