@@ -1,3 +1,5 @@
+# Proyecto movido a [https://github.com/mojitowp/sinpe](https://github.com/mojitowp/sinpe)
+
 # mojito-sinpe
 
 Habilita SINPE Móvil como pasarela de pago (solo funciona en Costa Rica)
